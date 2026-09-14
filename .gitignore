@@ -1,0 +1,13 @@
+.env
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+wii-sports-club
+log/
+reports/
+crash_panic.txt
+.idea
