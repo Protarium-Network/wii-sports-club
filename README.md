@@ -16,6 +16,7 @@ matchmaking, NAT traversal, ranking and DataStore.
 
 | Property | Value |
 |---|---|
+| Game server ID | `10144E00` |
 | Access key | `4d324052` |
 | NEX library version | `3.4.7` |
 
