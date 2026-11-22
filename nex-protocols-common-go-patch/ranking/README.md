@@ -16,3 +16,5 @@ if commonProtocol.GetRankingsByMode != nil {
 	rankDataList, totalCount, err = commonProtocol.GetRankingsAndCountByCategoryAndRankingOrderParam(category, orderParam)
 }
 ```
+And, Modification to `totalCount`: If `totalCount == 0` or `len(rankDataList) == 0`, the function now returns an empty list and sets `totalCount = 0`, rather than throwing a `NotFound` error.
+Returning `NotFound` for an empty leaderboard caused the initial score submission to crash or hang in certain games (e.g., *Mario & Sonic at the Rio 2016 Olympic Games*).
