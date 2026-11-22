@@ -2,6 +2,7 @@ package globals
 
 import (
 	"sync"
+
 	nex_types "github.com/PretendoNetwork/nex-go/v2/types"
 )
 
@@ -15,11 +16,11 @@ type PlayerInfo struct {
 
 // SessionInfo stores information about a matchmaking session
 type SessionInfo struct {
-	GID         uint32
-	GameMode    uint32
-	Sport       string
-	PlayerPIDs  []uint32
-	MaxPlayers  uint32
+	GID        uint32
+	GameMode   uint32
+	Sport      string
+	PlayerPIDs []uint32
+	MaxPlayers uint32
 }
 
 var (
@@ -114,8 +115,8 @@ func GetSportName(gameMode uint32) string {
 	case 0x01:
 		return "⚾ Baseball"
 	case 0x05:
-		return "🥊 Boxe"
+		return "🥊 Boxing"
 	default:
-		return "🎮 Inconnu"
+		return "🎮 Unknown"
 	}
 }

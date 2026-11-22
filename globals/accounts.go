@@ -10,6 +10,13 @@ import (
 var AuthenticationServerAccount *nex.Account
 var SecureServerAccount *nex.Account
 
+// InitAccounts builds the two Quazal system accounts. Call after
+// KerberosPassword is finalised.
+func InitAccounts() {
+	AuthenticationServerAccount = nex.NewAccount(types.NewPID(1), "Quazal Authentication", KerberosPassword, false)
+	SecureServerAccount = nex.NewAccount(types.NewPID(2), "Quazal Rendez-Vous", KerberosPassword, false)
+}
+
 func AccountDetailsByPID(pid types.PID) (*nex.Account, *nex.Error) {
 	if pid.Equals(AuthenticationServerAccount.PID) {
 		return AuthenticationServerAccount, nil
@@ -24,9 +31,7 @@ func AccountDetailsByPID(pid types.PID) (*nex.Account, *nex.Error) {
 		return nil, nex.NewError(errorCode, "Failed to get password from PID")
 	}
 
-	account := nex.NewAccount(pid, strconv.Itoa(int(pid)), password)
-
-	return account, nil
+	return nex.NewAccount(pid, strconv.Itoa(int(pid)), password, false), nil
 }
 
 func AccountDetailsByUsername(username string) (*nex.Account, *nex.Error) {
@@ -50,7 +55,5 @@ func AccountDetailsByUsername(username string) (*nex.Account, *nex.Error) {
 		return nil, nex.NewError(errorCode, "Failed to get password from PID")
 	}
 
-	account := nex.NewAccount(pid, username, password)
-
-	return account, nil
+	return nex.NewAccount(pid, username, password, false), nil
 }
